@@ -15,6 +15,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController namaController = TextEditingController();
   final TextEditingController nohpController = TextEditingController();
   bool _obscureText = true;
+  bool _obscureText2 = true;
   final _formKey = GlobalKey<FormState>();
   @override
   void initState() {
@@ -24,6 +25,12 @@ class _RegisterPageState extends State<RegisterPage> {
   void _toggle() {
     setState(() {
       _obscureText = !_obscureText;
+    });
+  }
+
+  void _toggle2() {
+    setState(() {
+      _obscureText2 = !_obscureText2;
     });
   }
 
@@ -213,7 +220,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         const SizedBox(height: 10),
                         TextFormField(
                           controller: confirmPasswordController,
-                          obscureText: _obscureText,
+                          obscureText: _obscureText2,
                           decoration: InputDecoration(
                             hintText: 'Konfirmasi Password',
                             border: OutlineInputBorder(
@@ -224,12 +231,12 @@ class _RegisterPageState extends State<RegisterPage> {
                             prefixIcon: Icon(Icons.lock),
                             suffixIcon: IconButton(
                               icon: Icon(
-                                _obscureText
+                                _obscureText2
                                     ? Icons.visibility_off
                                     : Icons.visibility,
                               ),
                               color: Color.fromARGB(255, 121, 120, 120),
-                              onPressed: _toggle,
+                              onPressed: _toggle2,
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
