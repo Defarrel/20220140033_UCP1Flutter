@@ -14,10 +14,17 @@ class _RegisterPageState extends State<RegisterPage> {
       TextEditingController();
   final TextEditingController namaController = TextEditingController();
   final TextEditingController nohpController = TextEditingController();
+  bool _obscureText = true;
   final _formKey = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
+  }
+
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
   }
 
   Widget build(BuildContext context) {
@@ -137,6 +144,105 @@ class _RegisterPageState extends State<RegisterPage> {
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Masukkan No HP';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Password', style: TextStyle(fontSize: 18)),
+                        const SizedBox(height: 10),
+                        TextFormField(
+                          controller: passwordController,
+                          obscureText: _obscureText,
+                          decoration: InputDecoration(
+                            hintText: 'Password',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(18),
+                              ),
+                            ),
+                            prefixIcon: Icon(Icons.lock),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                              ),
+                              color: Color.fromARGB(255, 121, 120, 120),
+                              onPressed: _toggle,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color.fromARGB(255, 14, 137, 55),
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(18),
+                              ),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Masukkan password';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Konfirmasi Password',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        const SizedBox(height: 10),
+                        TextFormField(
+                          controller: confirmPasswordController,
+                          obscureText: _obscureText,
+                          decoration: InputDecoration(
+                            hintText: 'Konfirmasi Password',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(18),
+                              ),
+                            ),
+                            prefixIcon: Icon(Icons.lock),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                              ),
+                              color: Color.fromARGB(255, 121, 120, 120),
+                              onPressed: _toggle,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color.fromARGB(255, 14, 137, 55),
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(18),
+                              ),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Masukkan konfirmasi password';
                             }
                             return null;
                           },
