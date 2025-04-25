@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     Image.asset(
-                      'assets/images/logo.png',
+                      'assets/images/razer.png',
                       width: 100,
                       height: 100,
                     ),
@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Color.fromARGB(255, 69, 21, 5),
+                      color: Color.fromARGB(255, 14, 137, 55),
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(18)),
                   ),
@@ -89,11 +89,12 @@ class _LoginPageState extends State<LoginPage> {
                     icon: Icon(
                       _obscureText ? Icons.visibility_off : Icons.visibility,
                     ),
+                    color: Color.fromARGB(255, 121, 120, 120),
                     onPressed: _toggle,
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Color.fromARGB(255, 69, 21, 5),
+                      color: Color.fromARGB(255, 14, 137, 55),
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(18)),
                   ),
@@ -112,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18),
                     ),
-                    backgroundColor: const Color.fromARGB(255, 62, 56, 54),
+                    backgroundColor: const Color.fromARGB(255, 14, 137, 55),
                     minimumSize: const Size(390, 60),
                   ),
                   onPressed: () {
@@ -126,17 +127,18 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              Center(
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Belum memiliki akun? Silahkan Daftar disini!',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Color.fromARGB(255, 62, 56, 54),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Belum memiliki akun? Silahkan'),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Daftar disini',
+                      style: TextStyle(color: Color.fromARGB(255, 14, 137, 55)),
                     ),
                   ),
-                ),
+                ],
               ),
             ],
           ),
