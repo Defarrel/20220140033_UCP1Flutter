@@ -10,13 +10,20 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  bool _obscureText = true;
   @override
   void initState() {
     super.initState();
   }
 
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       body: Form(
         key: _formKey,
@@ -46,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 10),
               TextFormField(
                 controller: emailController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: 'Email',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -71,14 +78,19 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 10),
               TextFormField(
                 controller: passwordController,
-                obscureText: true,
-                decoration: const InputDecoration(
+                obscureText: _obscureText,
+                decoration: InputDecoration(
                   hintText: 'Password',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(18)),
                   ),
                   prefixIcon: Icon(Icons.lock),
-                  suffixIcon: Icon(Icons.visibility_off),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscureText ? Icons.visibility_off : Icons.visibility,
+                    ),
+                    onPressed: _toggle,
+                  ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Color.fromARGB(255, 69, 21, 5),
