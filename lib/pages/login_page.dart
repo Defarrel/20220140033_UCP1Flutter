@@ -51,6 +51,12 @@ class _LoginPageState extends State<LoginPage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(18)),
                   ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(255, 69, 21, 5),
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(18)),
+                  ),
                   prefixIcon: Icon(Icons.email),
                 ),
                 validator: (value) {
@@ -72,7 +78,13 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.all(Radius.circular(18)),
                   ),
                   prefixIcon: Icon(Icons.lock),
-                  suffixIcon: Icon(Icons.visibility),
+                  suffixIcon: Icon(Icons.visibility_off),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(255, 69, 21, 5),
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(18)),
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -81,7 +93,39 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 70),
+              Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                    backgroundColor: const Color.fromARGB(255, 62, 56, 54),
+                    minimumSize: const Size(390, 60),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      //
+                    }
+                  },
+                  child: const Text(
+                    'Masuk',
+                    style: TextStyle(fontSize: 15, color: Colors.white),
+                  ),
+                ),
+              ),
+              Center(
+                child: TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Belum memiliki akun? Silahkan Daftar disini!',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Color.fromARGB(255, 62, 56, 54),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
