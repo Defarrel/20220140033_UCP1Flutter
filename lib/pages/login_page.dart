@@ -16,18 +16,34 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       body: Form(
+        key: _formKey,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset('assets/images/logo.png', width: 100, height: 100),
-              Text(
-                'Selamat Datang Kembali',
-                style: TextStyle(fontSize: 30, fontFamily: 'Poppins'),
+              Center(
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/logo.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                    Text(
+                      'Selamat Datang Kembali',
+                      style: TextStyle(fontSize: 30, fontFamily: 'Poppins'),
+                    ),
+                  ],
+                ),
               ),
+              const SizedBox(height: 30),
+              Text('Email', style: TextStyle(fontSize: 18)),
+              const SizedBox(height: 10),
               TextFormField(
                 controller: emailController,
                 decoration: const InputDecoration(
@@ -44,9 +60,12 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
+              Text('Password', style: TextStyle(fontSize: 18)),
+              const SizedBox(height: 10),
               TextFormField(
                 controller: passwordController,
+                obscureText: true,
                 decoration: const InputDecoration(
                   hintText: 'Password',
                   border: OutlineInputBorder(
@@ -62,6 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
+              const SizedBox(height: 30),
             ],
           ),
         ),
