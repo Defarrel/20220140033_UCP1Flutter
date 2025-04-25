@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pertemuan5_ucp/pages/Register_page.dart';
 import 'package:pertemuan5_ucp/pages/login_page.dart';
 
 void main() {
@@ -17,7 +18,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       initialRoute: '/login',
-      routes: {'/login': (context) => const LoginPage()},
+      routes: {
+        '/login': (context) => const LoginPage(),
+        '/register': (context) => const RegisterPage(),
+      },
     );
   }
 }

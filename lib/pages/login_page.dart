@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +132,9 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Text('Belum memiliki akun? Silahkan'),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/register');
+                    },
                     child: Text(
                       'Daftar disini',
                       style: TextStyle(color: Color.fromARGB(255, 14, 137, 55)),
