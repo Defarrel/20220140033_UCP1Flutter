@@ -79,7 +79,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your name';
+                    return 'Nama tidak boleh kosong';
                   }
                   return null;
                 },
@@ -114,7 +114,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Masukkan email';
+                              return 'Email tidak boleh kosong';
                             }
                             return null;
                           },
@@ -150,7 +150,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Masukkan No HP';
+                              return 'No HP tidak boleh kosong';
                             }
                             return null;
                           },
@@ -200,7 +200,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Masukkan password';
+                              return 'Password tidak boleh kosong';
                             }
                             return null;
                           },
@@ -249,7 +249,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Masukkan konfirmasi password';
+                              return 'Konfirmasi Password tidak boleh kosong';
                             }
                             return null;
                           },
