@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:pertemuan5_ucp/piket/detail_piket.dart';
 
 class PiketGudang extends StatefulWidget {
   final String username;
@@ -19,7 +20,6 @@ class _PiketGudangState extends State<PiketGudang> {
   @override
   void initState() {
     super.initState();
-    namaController.text = widget.username;
   }
 
   void addPiket() {
@@ -67,7 +67,7 @@ class _PiketGudangState extends State<PiketGudang> {
               Text('Nama Anggota', style: TextStyle(fontSize: 18)),
               const SizedBox(height: 10),
               TextFormField(
-                controller: namaController,
+                controller: namaController..text = widget.username,
                 decoration: InputDecoration(
                   hintText: 'Nama Anggota',
                   border: OutlineInputBorder(
@@ -231,7 +231,16 @@ class _PiketGudangState extends State<PiketGudang> {
                                   size: 20,
                                 ),
                                 onTap: () {
-                                  
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailPiket(
+                                        username: namaController.text,
+                                        tanggal: tanggalController.text,
+                                        piket: list[index],
+                                      ),
+                                    ),
+                                  );
                                 },
                               ),
                             );
