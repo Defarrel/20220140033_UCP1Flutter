@@ -47,7 +47,9 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, '/login');
+                        },
                         icon: Icon(
                           Icons.exit_to_app,
                           color: Colors.white,

@@ -118,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.pushReplacementNamed(context, '/home');
                     }
                   },
                   child: const Text(
