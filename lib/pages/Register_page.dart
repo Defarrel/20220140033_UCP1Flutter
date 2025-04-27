@@ -271,7 +271,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      //
+                      if (passwordController.text ==
+                          confirmPasswordController.text) {
+                        Navigator.pushNamed(context, '/login');
+                      }
                     }
                   },
                   child: const Text(
@@ -286,7 +289,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   Text('Sudah memiliki akun? Silahkan'),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/register');
+                      Navigator.pushNamed(context, '/login');
                     },
                     child: Text(
                       'Login disini',

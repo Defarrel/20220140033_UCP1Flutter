@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pertemuan5_ucp/home/home_page.dart';
 import 'package:pertemuan5_ucp/pages/Register_page.dart';
 import 'package:pertemuan5_ucp/pages/login_page.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/login',
       routes: {
+        '/home': (context) => const HomePage(),
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
       },
