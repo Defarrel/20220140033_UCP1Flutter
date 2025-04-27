@@ -273,7 +273,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     if (_formKey.currentState!.validate()) {
                       if (passwordController.text ==
                           confirmPasswordController.text) {
-                        Navigator.pushNamed(context, '/home');
+                        Navigator.pushNamed(context, '/home', arguments: emailController.text);
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

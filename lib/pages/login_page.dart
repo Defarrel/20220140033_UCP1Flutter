@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pertemuan5_ucp/home/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -118,7 +119,19 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.pushReplacementNamed(context, '/home');
+                      Navigator.pushReplacementNamed(
+                        context,
+                        '/home',
+                        arguments: emailController.text,
+                      );
+                      // Navigator.pushReplacement(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => HomePage(
+                      //       username: emailController.text,
+                      //     ),
+                      //   ),
+                      // );
                     }
                   },
                   child: const Text(
@@ -137,7 +150,9 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: Text(
                       'Daftar disini',
-                      style: TextStyle(color: Color.fromARGB(255, 102, 185, 51)),
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 102, 185, 51),
+                      ),
                     ),
                   ),
                 ],

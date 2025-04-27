@@ -20,7 +20,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/login',
       routes: {
-        '/home': (context) => const HomePage(),
+        '/home': (context) => HomePage(
+          username: ModalRoute.of(context)!.settings.arguments as String,
+        ),
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
       },

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String username;
+  const HomePage({super.key, required this.username});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Text(
-                        'Admin',
+                        widget.username,
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
                     ],
