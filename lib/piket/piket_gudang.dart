@@ -3,13 +3,15 @@ import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 class PiketGudang extends StatefulWidget {
-  const PiketGudang({super.key});
+  final String username;
+  const PiketGudang({super.key, required this.username});
 
   @override
   State<PiketGudang> createState() => _PiketGudangState();
 }
 
 class _PiketGudangState extends State<PiketGudang> {
+  List<String> list = [];
   final TextEditingController namaController = TextEditingController();
   final TextEditingController tanggalController = TextEditingController();
   final TextEditingController piketController = TextEditingController();
@@ -17,6 +19,13 @@ class _PiketGudangState extends State<PiketGudang> {
   @override
   void initState() {
     super.initState();
+    namaController.text = widget.username;
+  }
+
+  void addPiket() {
+    setState(() {
+      list.add(piketController.text);
+    });
   }
 
   Future<void> _selectDate() async {
@@ -137,7 +146,7 @@ class _PiketGudangState extends State<PiketGudang> {
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Piket tidak boleh kosong';
+                              return 'Tugas tidak boleh kosong';
                             }
                             return null;
                           },
@@ -152,7 +161,12 @@ class _PiketGudangState extends State<PiketGudang> {
                       children: [
                         const SizedBox(height: 30),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              addPiket();
+                              piketController.clear();
+                            }
+                          },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18),
@@ -175,17 +189,54 @@ class _PiketGudangState extends State<PiketGudang> {
                   ),
                 ],
               ),
+              const SizedBox(height: 30),
               Center(
-                child: Column(
-                  children: [
-                    const SizedBox(height: 30),
-                    Text(
-                      'Daftar Tugas Piket',
-                      style: TextStyle(fontSize: 18, color: Colors.black),
-                    ),
-                    const SizedBox(height: 10),
-                  ],
+                child: Text(
+                  'Daftar Tugas Piket',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
+              ),
+              Expanded(
+                child:
+                    list.isEmpty
+                        ? Center(
+                          child: Text(
+                            'Belum ada Data',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: const Color.fromARGB(255, 0, 0, 0),
+                            ),
+                          ),
+                        )
+                        : ListView.builder(
+                          itemCount: list.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              margin: EdgeInsets.symmetric(vertical: 8),
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 102, 185, 51),
+                                borderRadius: BorderRadius.circular(18),
+                              ),
+                              child: ListTile(
+                                title: Text(
+                                  list[index],
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                trailing: Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
+                                onTap: () {
+                                  
+                                },
+                              ),
+                            );
+                          },
+                        ),
               ),
             ],
           ),
