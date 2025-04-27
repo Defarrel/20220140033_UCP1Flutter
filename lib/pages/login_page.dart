@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Color.fromARGB(255, 14, 137, 55),
+                      color: Color.fromARGB(255, 102, 185, 51),
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(18)),
                   ),
@@ -94,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Color.fromARGB(255, 14, 137, 55),
+                      color: Color.fromARGB(255, 102, 185, 51),
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(18)),
                   ),
@@ -113,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18),
                     ),
-                    backgroundColor: const Color.fromARGB(255, 14, 137, 55),
+                    backgroundColor: const Color.fromARGB(255, 102, 185, 51),
                     minimumSize: const Size(390, 60),
                   ),
                   onPressed: () {
@@ -137,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: Text(
                       'Daftar disini',
-                      style: TextStyle(color: Color.fromARGB(255, 14, 137, 55)),
+                      style: TextStyle(color: Color.fromARGB(255, 102, 185, 51)),
                     ),
                   ),
                 ],

@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Container(
               padding: EdgeInsets.all(28),
-              color: Color.fromARGB(255, 14, 137, 55),
+              color: Color.fromARGB(255, 102, 185, 51),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -50,7 +50,19 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            
+            Container(
+              margin: EdgeInsets.all(16),
+              height: 120,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                image: DecorationImage(
+                  image: AssetImage(
+                    'assets/images/banner.jpg',
+                  ), // Ganti dengan path gambar promo
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
           ],
         ),
       ),
