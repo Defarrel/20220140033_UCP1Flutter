@@ -87,7 +87,9 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             IconButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, '/piket');
+                                Navigator.pushNamed(context, '/piket',
+                                    arguments: widget.username
+                                );
                               },
                               icon: Icon(Icons.groups_2),
                               color: Colors.white,
