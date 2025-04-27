@@ -71,7 +71,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Color.fromARGB(255, 102, 185, 51),
+                      color: Color.fromARGB(255, 14, 137, 55),
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(18)),
                   ),
@@ -273,7 +273,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     if (_formKey.currentState!.validate()) {
                       if (passwordController.text ==
                           confirmPasswordController.text) {
-                        Navigator.pushNamed(context, '/login');
+                        Navigator.pushNamed(context, '/home');
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Password tidak sama',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            backgroundColor: Color.fromARGB(255, 255, 0, 0),
+                            padding: const EdgeInsets.all(30),
+                          ),
+                        );
                       }
                     }
                   },
@@ -293,7 +304,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                     child: Text(
                       'Login disini',
-                      style: TextStyle(color: Color.fromARGB(255, 102, 185, 51)),
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 102, 185, 51),
+                      ),
                     ),
                   ),
                 ],
