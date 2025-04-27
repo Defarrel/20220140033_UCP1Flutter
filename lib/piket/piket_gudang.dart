@@ -1,6 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class PiketGudang extends StatefulWidget {
   const PiketGudang({super.key});
@@ -17,6 +17,22 @@ class _PiketGudangState extends State<PiketGudang> {
   @override
   void initState() {
     super.initState();
+  }
+
+  Future<void> _selectDate() async {
+    DateTime? _pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    setState(() {
+      String formattedDate = DateFormat(
+        'EEEE, dd MMMM yyyy',
+      ).format(_pickedDate ?? DateTime.now());
+      tanggalController.text = formattedDate;
+    });
   }
 
   @override
@@ -80,6 +96,10 @@ class _PiketGudangState extends State<PiketGudang> {
                   ),
                   prefixIcon: Icon(Icons.calendar_month),
                 ),
+                readOnly: true,
+                onTap: () {
+                  _selectDate();
+                },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Tanggal tidak boleh kosong';
@@ -161,10 +181,7 @@ class _PiketGudangState extends State<PiketGudang> {
                     const SizedBox(height: 30),
                     Text(
                       'Daftar Tugas Piket',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
+                      style: TextStyle(fontSize: 18, color: Colors.black),
                     ),
                     const SizedBox(height: 10),
                   ],
