@@ -86,7 +86,9 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/piket');
+                              },
                               icon: Icon(Icons.groups_2),
                               color: Colors.white,
                               iconSize: 40,

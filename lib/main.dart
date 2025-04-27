@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pertemuan5_ucp/home/home_page.dart';
 import 'package:pertemuan5_ucp/pages/Register_page.dart';
 import 'package:pertemuan5_ucp/pages/login_page.dart';
+import 'package:pertemuan5_ucp/piket/piket_gudang.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         ),
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
+        '/piket': (context) => const PiketGudang(),
       },
     );
   }
