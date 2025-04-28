@@ -237,7 +237,7 @@ class _InsertPelangganState extends State<InsertPelanggan> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 70),
+                const SizedBox(height: 50),
                 Center(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -271,7 +271,7 @@ class _InsertPelangganState extends State<InsertPelanggan> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 30),
                 Center(
                   child: OutlinedButton(
                     style: ElevatedButton.styleFrom(
