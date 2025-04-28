@@ -215,7 +215,6 @@ class _PiketGudangState extends State<PiketGudang> {
                     )
                     : ListView.builder(
                       shrinkWrap: true,
-
                       itemCount: list.length,
                       itemBuilder: (context, index) {
                         return Container(
