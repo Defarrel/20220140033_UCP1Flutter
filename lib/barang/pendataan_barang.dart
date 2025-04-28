@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:pertemuan5_ucp/barang/detail_barang.dart';
 
 class PendataanBarang extends StatefulWidget {
   const PendataanBarang({super.key});
@@ -270,14 +271,19 @@ class _PendataanBarangState extends State<PendataanBarang> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder:
-                        //         (context) => (
-                        //         ),
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) => DetailBarang(
+                                      tanggal: tanggalController.text,
+                                      jenisTransaksi: selectedBarang!,
+                                      jenisBarang: selectedBarang!,
+                                      jumlah: jumlahController.text,
+                                      harga: hargaController.text
+                                ),
+                          ),
+                        );
                       }
                     },
                     child: const Text(
