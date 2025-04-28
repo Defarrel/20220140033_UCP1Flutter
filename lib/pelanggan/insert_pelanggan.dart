@@ -8,6 +8,18 @@ class InsertPelanggan extends StatefulWidget {
 }
 
 class _InsertPelangganState extends State<InsertPelanggan> {
+  final TextEditingController namaCustomerController = TextEditingController();
+  final TextEditingController noHpController = TextEditingController();
+  final TextEditingController alamatController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController provinsiController = TextEditingController();
+  final TextEditingController kodePosController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  @override
+    void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +36,7 @@ class _InsertPelangganState extends State<InsertPelanggan> {
         child: Padding(padding: const EdgeInsets.all(15.0), child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            
-          ],
+          children: [],
         )),
       ),
     );
