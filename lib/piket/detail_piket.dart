@@ -21,7 +21,7 @@ class DetailPiket extends StatelessWidget {
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        toolbarHeight: 100,
+        toolbarHeight: 70,
         iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Padding(

@@ -53,202 +53,209 @@ class _PiketGudangState extends State<PiketGudang> {
         backgroundColor: Color.fromARGB(255, 102, 185, 51),
         title: Text('Piket Gudang', style: TextStyle(color: Colors.white)),
         centerTitle: true,
-        toolbarHeight: 100,
+        toolbarHeight: 70,
         iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Form(
         key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Nama Anggota', style: TextStyle(fontSize: 18)),
-              const SizedBox(height: 10),
-              TextFormField(
-                controller: namaController..text = widget.username,
-                decoration: InputDecoration(
-                  hintText: 'Nama Anggota',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(18)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color.fromARGB(255, 102, 185, 51),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Nama Anggota', style: TextStyle(fontSize: 18)),
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: namaController..text = widget.username,
+                  decoration: InputDecoration(
+                    hintText: 'Nama Anggota',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(18)),
                     ),
-                    borderRadius: BorderRadius.all(Radius.circular(18)),
-                  ),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Nama tidak boleh kosong';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 30),
-              Text('Pilih Tanggal', style: TextStyle(fontSize: 18)),
-              const SizedBox(height: 10),
-              TextFormField(
-                controller: tanggalController,
-                decoration: InputDecoration(
-                  hintText: 'Pilih Tanggal',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(18)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color.fromARGB(255, 102, 185, 51),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 102, 185, 51),
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(18)),
                     ),
-                    borderRadius: BorderRadius.all(Radius.circular(18)),
                   ),
-                  prefixIcon: Icon(Icons.calendar_month),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Nama tidak boleh kosong';
+                    }
+                    return null;
+                  },
                 ),
-                readOnly: true,
-                onTap: () {
-                  _selectDate();
-                },
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Tanggal tidak boleh kosong';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 30),
-              Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Tugas Piket', style: TextStyle(fontSize: 18)),
-                        const SizedBox(height: 10),
-                        TextFormField(
-                          controller: piketController,
-                          decoration: InputDecoration(
-                            hintText: 'Tugas Piket',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(18),
+                const SizedBox(height: 30),
+                Text('Pilih Tanggal', style: TextStyle(fontSize: 18)),
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: tanggalController,
+                  decoration: InputDecoration(
+                    hintText: 'Pilih Tanggal',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(18)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 102, 185, 51),
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(18)),
+                    ),
+                    prefixIcon: Icon(Icons.calendar_month),
+                  ),
+                  readOnly: true,
+                  onTap: () {
+                    _selectDate();
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Tanggal tidak boleh kosong';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 30),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Tugas Piket', style: TextStyle(fontSize: 18)),
+                          const SizedBox(height: 10),
+                          TextFormField(
+                            controller: piketController,
+                            decoration: InputDecoration(
+                              hintText: 'Tugas Piket',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(18),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 102, 185, 51),
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(18),
+                                ),
                               ),
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color.fromARGB(255, 102, 185, 51),
-                              ),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(18),
-                              ),
-                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Tugas tidak boleh kosong';
+                              }
+                              return null;
+                            },
                           ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Tugas tidak boleh kosong';
-                            }
-                            return null;
-                          },
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 30),
-                        ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              addPiket();
-                              piketController.clear();
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                            ),
-                            backgroundColor: const Color.fromARGB(
-                              255,
-                              102,
-                              185,
-                              51,
-                            ),
-                            minimumSize: const Size(390, 55),
-                          ),
-                          child: const Text(
-                            'Tambah',
-                            style: TextStyle(fontSize: 18, color: Colors.white),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 30),
-              Center(
-                child: Text(
-                  'Daftar Tugas Piket',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Expanded(
-                child:
-                    list.isEmpty
-                        ? Center(
-                          child: Text(
-                            'Belum ada Data',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: const Color.fromARGB(255, 0, 0, 0),
-                            ),
-                          ),
-                        )
-                        : ListView.builder(
-                          itemCount: list.length,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              margin: EdgeInsets.symmetric(vertical: 8),
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 102, 185, 51),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 30),
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                addPiket();
+                                piketController.clear();
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(18),
                               ),
-                              child: ListTile(
-                                title: Text(
-                                  list[index],
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                trailing: Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: Colors.white,
-                                  size: 20,
-                                ),
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder:
-                                          (context) => DetailPiket(
-                                            username: namaController.text,
-                                            tanggal: tanggalController.text,
-                                            piket: list[index],
-                                          ),
-                                    ),
-                                  );
-                                },
+                              backgroundColor: const Color.fromARGB(
+                                255,
+                                102,
+                                185,
+                                51,
                               ),
-                            );
-                          },
-                        ),
-              ),
-            ],
+                              minimumSize: const Size(390, 55),
+                            ),
+                            child: const Text(
+                              'Tambah',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 30),
+                Center(
+                  child: Text(
+                    'Daftar Tugas Piket',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                list.isEmpty
+                    ? Center(
+                      child: Column(
+                        children: [
+                          Padding(padding: EdgeInsets.only(top: 120)),
+                          Text(
+                            'Belum ada Data',
+                            style: TextStyle(fontSize: 16, color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    )
+                    : ListView.builder(
+                      shrinkWrap: true,
+
+                      itemCount: list.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          margin: EdgeInsets.symmetric(vertical: 8),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 102, 185, 51),
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                          child: ListTile(
+                            title: Text(
+                              list[index],
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
+                            ),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder:
+                                      (context) => DetailPiket(
+                                        username: namaController.text,
+                                        tanggal: tanggalController.text,
+                                        piket: list[index],
+                                      ),
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    ),
+              ],
+            ),
           ),
         ),
       ),
