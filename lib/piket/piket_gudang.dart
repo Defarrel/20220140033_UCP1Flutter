@@ -180,7 +180,7 @@ class _PiketGudangState extends State<PiketGudang> {
                             minimumSize: const Size(390, 55),
                           ),
                           child: const Text(
-                            'Simpan',
+                            'Tambah',
                             style: TextStyle(fontSize: 18, color: Colors.white),
                           ),
                         ),
@@ -234,11 +234,12 @@ class _PiketGudangState extends State<PiketGudang> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => DetailPiket(
-                                        username: namaController.text,
-                                        tanggal: tanggalController.text,
-                                        piket: list[index],
-                                      ),
+                                      builder:
+                                          (context) => DetailPiket(
+                                            username: namaController.text,
+                                            tanggal: tanggalController.text,
+                                            piket: list[index],
+                                          ),
                                     ),
                                   );
                                 },

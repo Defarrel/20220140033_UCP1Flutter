@@ -87,8 +87,10 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             IconButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, '/piket',
-                                    arguments: widget.username
+                                Navigator.pushNamed(
+                                  context,
+                                  '/piket',
+                                  arguments: widget.username,
                                 );
                               },
                               icon: Icon(Icons.groups_2),
@@ -120,7 +122,9 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/pelanggan');
+                              },
                               icon: Icon(
                                 Icons.person_add_alt_1,
                                 color: Colors.white,
