@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pertemuan5_ucp/pelanggan/detail_pelanggan.dart';
 
 class InsertPelanggan extends StatefulWidget {
   const InsertPelanggan({super.key});
@@ -247,14 +248,19 @@ class _InsertPelangganState extends State<InsertPelanggan> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // Navigator.pushReplacement(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => HomePage(
-                      //       username: emailController.text,
-                      //     ),
-                      //   ),
-                      // );
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailPelanggan(
+                            namaCust: namaCustomerController.text,
+                            email: emailController.text,
+                            noHp: noHpController.text,
+                            alamat: alamatController.text,
+                            provinsi: provinsiController.text,
+                            kodePos: kodePosController.text,
+                          ),
+                        ),
+                      );
                     }
                   },
                   child: const Text(
