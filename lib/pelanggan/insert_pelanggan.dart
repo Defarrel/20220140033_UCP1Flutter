@@ -33,6 +33,7 @@ class _InsertPelangganState extends State<InsertPelanggan> {
         iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Form(
+        key: _formKey,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
@@ -280,6 +281,7 @@ class _InsertPelangganState extends State<InsertPelanggan> {
                       alamatController.clear();
                       provinsiController.clear();
                       kodePosController.clear();
+                      _formKey.currentState!.validate();
                     });
                   },
                   child: const Text(
