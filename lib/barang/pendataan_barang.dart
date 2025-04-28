@@ -13,6 +13,7 @@ class _PendataanBarangState extends State<PendataanBarang> {
   final TextEditingController tanggalController = TextEditingController();
   final TextEditingController jumlahController = TextEditingController();
   final TextEditingController hargaController = TextEditingController();
+  int totalHarga = 0;
   final _formKey = GlobalKey<FormState>();
 
   final List<String> jenisBarang = [
@@ -32,6 +33,16 @@ class _PendataanBarangState extends State<PendataanBarang> {
     'Lampu': 40000,
     'Speaker': 200000,
   };
+
+  void calculateTotalHarga() {
+    setState(() {
+      int jumlah = int.tryParse(jumlahController.text) ?? 0;
+
+      setState(() {
+        totalHarga = jumlah * hargaBarang[selectedBarang]!;
+      });
+    });
+  }
 
   final List<String> jenisTransaksi = ['Barang Masuk', 'Barang Keluar'];
   String? selectedTransaksi;
@@ -231,7 +242,12 @@ class _PendataanBarangState extends State<PendataanBarang> {
                             controller: hargaController,
                             readOnly: true,
                             decoration: InputDecoration(
-                              prefixText: 'Rp. ',
+                              prefix: Text(
+                                'Rp. ',
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              ),
                               hintText: 'Harga Satuan',
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
@@ -271,16 +287,18 @@ class _PendataanBarangState extends State<PendataanBarang> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
+                        calculateTotalHarga();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder:
                                 (context) => DetailBarang(
-                                      tanggal: tanggalController.text,
-                                      jenisTransaksi: selectedTransaksi!,
-                                      jenisBarang: selectedBarang!,
-                                      jumlah: jumlahController.text,
-                                      harga: hargaController.text
+                                  tanggal: tanggalController.text,
+                                  jenisTransaksi: selectedTransaksi!,
+                                  jenisBarang: selectedBarang!,
+                                  jumlah: jumlahController.text,
+                                  harga: hargaController.text,
+                                  totalHarga: totalHarga,
                                 ),
                           ),
                         );

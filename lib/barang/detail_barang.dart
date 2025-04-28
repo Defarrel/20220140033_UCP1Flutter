@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class DetailBarang extends StatelessWidget {
   final String tanggal, jumlah, jenisBarang, jenisTransaksi, harga;
+  final int totalHarga;
   const DetailBarang({
     super.key,
     required this.tanggal,
@@ -9,6 +10,7 @@ class DetailBarang extends StatelessWidget {
     required this.jenisBarang,
     required this.jenisTransaksi,
     required this.harga,
+    required this.totalHarga,
   });
 
   @override
@@ -161,7 +163,7 @@ class DetailBarang extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'Rp.',
+                          'Rp. $totalHarga',
                           style: TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.bold,
@@ -172,6 +174,23 @@ class DetailBarang extends StatelessWidget {
                     Divider(color: Colors.grey, thickness: 1),
                     SizedBox(height: 20),
                   ],
+                ),
+                SizedBox(height: 30),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                    backgroundColor: const Color.fromARGB(255, 102, 185, 51),
+                    minimumSize: const Size(390, 50),
+                  ),
+                  onPressed: () {
+                    Navigator.popUntil(context, (route) => route.isFirst);
+                  },
+                  child: const Text(
+                    'Selesai',
+                    style: TextStyle(fontSize: 15, color: Colors.white),
+                  ),
                 ),
               ],
             ),
