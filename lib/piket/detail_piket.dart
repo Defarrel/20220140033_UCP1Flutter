@@ -34,7 +34,11 @@ class DetailPiket extends StatelessWidget {
                 Expanded(
                   child: Text(
                     tanggal,
-                    style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 102, 185, 51), fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromARGB(255, 102, 185, 51),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Container(

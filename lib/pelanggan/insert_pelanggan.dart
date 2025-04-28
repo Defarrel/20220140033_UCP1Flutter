@@ -28,7 +28,10 @@ class _InsertPelangganState extends State<InsertPelanggan> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         backgroundColor: Color.fromARGB(255, 102, 185, 51),
-        title: Text('Data Pelanggan', style: TextStyle(color: Colors.white)),
+        title: Text(
+          'Data Pelanggan',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         toolbarHeight: 70,
         iconTheme: IconThemeData(color: Colors.white),

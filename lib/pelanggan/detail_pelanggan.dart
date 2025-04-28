@@ -19,7 +19,10 @@ class DetailPelanggan extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         backgroundColor: Color.fromARGB(255, 102, 185, 51),
-        title: Text('Detail $namaCust', style: TextStyle(color: Colors.white)),
+        title: Text(
+          'Detail $namaCust',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         toolbarHeight: 70,
         iconTheme: IconThemeData(color: Colors.white),

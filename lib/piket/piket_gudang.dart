@@ -51,7 +51,10 @@ class _PiketGudangState extends State<PiketGudang> {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         backgroundColor: Color.fromARGB(255, 102, 185, 51),
-        title: Text('Piket Gudang', style: TextStyle(color: Colors.white)),
+        title: Text(
+          'Piket Gudang',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         toolbarHeight: 70,
         iconTheme: IconThemeData(color: Colors.white),
