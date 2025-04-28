@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pertemuan5_ucp/barang/pendataan_barang.dart';
 import 'package:pertemuan5_ucp/home/home_page.dart';
 import 'package:pertemuan5_ucp/pages/Register_page.dart';
 import 'package:pertemuan5_ucp/pages/login_page.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
               username: ModalRoute.of(context)!.settings.arguments as String,
             ),
         '/pelanggan': (context) => const InsertPelanggan(),
+        '/barang': (context) => const PendataanBarang(),
       },
     );
   }

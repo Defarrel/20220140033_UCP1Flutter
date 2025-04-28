@@ -159,7 +159,9 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/barang');
+                        },
                         icon: Icon(
                           Icons.inventory_2,
                           color: Colors.white,
