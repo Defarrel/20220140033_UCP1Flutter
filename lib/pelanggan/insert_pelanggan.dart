@@ -229,11 +229,67 @@ class _InsertPelangganState extends State<InsertPelanggan> {
                             return null;
                           },
                         ),
-                        
                       ],
                     ),
                   ),
                 ],
+              ),
+              const SizedBox(height: 70),
+              Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                    backgroundColor: const Color.fromARGB(255, 102, 185, 51),
+                    minimumSize: const Size(390, 60),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      // Navigator.pushReplacement(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => HomePage(
+                      //       username: emailController.text,
+                      //     ),
+                      //   ),
+                      // );
+                    }
+                  },
+                  child: const Text(
+                    'Simpan',
+                    style: TextStyle(fontSize: 15, color: Colors.white),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 40),
+              Center(
+                child: OutlinedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                    backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                    minimumSize: const Size(390, 60),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      emailController.clear();
+                      namaCustomerController.clear();
+                      noHpController.clear();
+                      alamatController.clear();
+                      provinsiController.clear();
+                      kodePosController.clear();
+                    });
+                  },
+                  child: const Text(
+                    'Reset',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Color.fromARGB(255, 102, 185, 51),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
