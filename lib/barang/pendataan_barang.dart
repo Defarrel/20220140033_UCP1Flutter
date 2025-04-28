@@ -277,7 +277,7 @@ class _PendataanBarangState extends State<PendataanBarang> {
                             builder:
                                 (context) => DetailBarang(
                                       tanggal: tanggalController.text,
-                                      jenisTransaksi: selectedBarang!,
+                                      jenisTransaksi: selectedTransaksi!,
                                       jenisBarang: selectedBarang!,
                                       jumlah: jumlahController.text,
                                       harga: hargaController.text
