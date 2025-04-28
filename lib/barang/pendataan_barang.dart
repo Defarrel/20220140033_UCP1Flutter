@@ -11,8 +11,7 @@ class PendataanBarang extends StatefulWidget {
 class _PendataanBarangState extends State<PendataanBarang> {
   final TextEditingController tanggalController = TextEditingController();
   final TextEditingController jumlahController = TextEditingController();
-  final TextEditingController hargaController =
-      TextEditingController(); // Tambahkan controller harga
+  final TextEditingController hargaController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   final List<String> jenisBarang = [
@@ -178,8 +177,7 @@ class _PendataanBarangState extends State<PendataanBarang> {
                   onChanged: (value) {
                     setState(() {
                       selectedBarang = value;
-                      hargaController.text =
-                          hargaBarang[value!]!.toString(); 
+                      hargaController.text = hargaBarang[value!]!.toString();
                     });
                   },
                 ),
@@ -230,7 +228,7 @@ class _PendataanBarangState extends State<PendataanBarang> {
                           const SizedBox(height: 10),
                           TextFormField(
                             controller: hargaController,
-                            readOnly: true, 
+                            readOnly: true,
                             decoration: InputDecoration(
                               prefixText: 'Rp. ',
                               hintText: 'Harga Satuan',
@@ -259,6 +257,34 @@ class _PendataanBarangState extends State<PendataanBarang> {
                       ),
                     ),
                   ],
+                ),
+                const SizedBox(height: 50),
+                Center(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                      backgroundColor: const Color.fromARGB(255, 102, 185, 51),
+                      minimumSize: const Size(390, 60),
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder:
+                        //         (context) => (
+                        //         ),
+                        //   ),
+                        // );
+                      }
+                    },
+                    child: const Text(
+                      'Submit',
+                      style: TextStyle(fontSize: 15, color: Colors.white),
+                    ),
+                  ),
                 ),
               ],
             ),
