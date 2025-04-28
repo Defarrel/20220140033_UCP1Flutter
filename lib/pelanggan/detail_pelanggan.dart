@@ -19,10 +19,7 @@ class DetailPelanggan extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: true,
         backgroundColor: Color.fromARGB(255, 102, 185, 51),
-        title: Text(
-          'Detail $namaCust',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
+        title: Text('Detail $namaCust', style: TextStyle(color: Colors.white)),
         centerTitle: true,
         toolbarHeight: 70,
         iconTheme: IconThemeData(color: Colors.white),
@@ -164,7 +161,7 @@ class DetailPelanggan extends StatelessWidget {
                         minimumSize: const Size(390, 60),
                       ),
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.popUntil(context, (route) => route.isFirst);
                       },
                       child: const Text(
                         'Selesai',

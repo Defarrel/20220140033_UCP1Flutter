@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 100), // Tambahkan sedikit spacer
+                SizedBox(height: 100), 
                 Center(
                   child: Column(
                     children: [

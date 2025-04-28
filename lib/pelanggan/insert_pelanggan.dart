@@ -252,7 +252,7 @@ class _InsertPelangganState extends State<InsertPelanggan> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder:
