@@ -10,7 +10,11 @@ class PendataanBarang extends StatefulWidget {
 
 class _PendataanBarangState extends State<PendataanBarang> {
   final TextEditingController tanggalController = TextEditingController();
+  final TextEditingController jumlahController = TextEditingController();
+  final TextEditingController hargaController =
+      TextEditingController(); // Tambahkan controller harga
   final _formKey = GlobalKey<FormState>();
+
   final List<String> jenisBarang = [
     'Mouse',
     'Keyboard',
@@ -19,11 +23,20 @@ class _PendataanBarangState extends State<PendataanBarang> {
     'Lampu',
     'Speaker',
   ];
-  final List<String> jenisTransaksi = [
-    'Barang Masuk',
-    'Barang Keluar'
-  ];
-  String? selectedValue;
+
+  final Map<String, int> hargaBarang = {
+    'Mouse': 150000,
+    'Keyboard': 300000,
+    'Headset': 250000,
+    'Mousepad': 50000,
+    'Lampu': 40000,
+    'Speaker': 200000,
+  };
+
+  final List<String> jenisTransaksi = ['Barang Masuk', 'Barang Keluar'];
+  String? selectedTransaksi;
+  String? selectedBarang;
+
   @override
   void initState() {
     super.initState();
@@ -62,112 +75,193 @@ class _PendataanBarangState extends State<PendataanBarang> {
       ),
       body: Form(
         key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Tanggal Transaksi', style: TextStyle(fontSize: 18)),
-              const SizedBox(height: 10),
-              TextFormField(
-                controller: tanggalController,
-                decoration: InputDecoration(
-                  hintText: 'Tanggal Transaksi',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(18)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color.fromARGB(255, 102, 185, 51),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Tanggal Transaksi', style: TextStyle(fontSize: 18)),
+                const SizedBox(height: 10),
+                TextFormField(
+                  controller: tanggalController,
+                  decoration: InputDecoration(
+                    hintText: 'Tanggal Transaksi',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(18)),
                     ),
-                    borderRadius: BorderRadius.all(Radius.circular(18)),
-                  ),
-                  prefixIcon: Icon(Icons.calendar_month),
-                ),
-                readOnly: true,
-                onTap: () {
-                  _selectDate();
-                },
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Tanggal tidak boleh kosong';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 30),
-              DropdownButtonFormField<String>(
-                isExpanded: true,
-                decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color.fromARGB(255, 102, 185, 51),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 102, 185, 51),
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(18)),
                     ),
-                    borderRadius: BorderRadius.all(Radius.circular(18)),
+                    prefixIcon: Icon(Icons.calendar_month),
                   ),
-                  labelText: 'Jenis Transaksi',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18),
-                  ),
+                  readOnly: true,
+                  onTap: _selectDate,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Tanggal tidak boleh kosong';
+                    }
+                    return null;
+                  },
                 ),
-                hint: const Text('Jenis Transaksi'),
-                items:
-                    jenisTransaksi
-                        .map(
-                          (item) => DropdownMenuItem<String>(
-                            value: item,
-                            child: Text(item),
+                SizedBox(height: 30),
+                DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 102, 185, 51),
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(18)),
+                    ),
+                    labelText: 'Jenis Transaksi',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                  ),
+                  hint: const Text('Jenis Transaksi'),
+                  items:
+                      jenisTransaksi
+                          .map(
+                            (item) => DropdownMenuItem<String>(
+                              value: item,
+                              child: Text(item),
+                            ),
+                          )
+                          .toList(),
+                  validator: (value) {
+                    if (value == null) {
+                      return 'Pilih jenis transaksi';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) {
+                    setState(() {
+                      selectedTransaksi = value;
+                    });
+                  },
+                ),
+                const SizedBox(height: 30),
+                DropdownButtonFormField<String>(
+                  isExpanded: true,
+                  decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 102, 185, 51),
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(18)),
+                    ),
+                    labelText: 'Jenis Barang',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                  ),
+                  hint: const Text('Jenis Barang'),
+                  items:
+                      jenisBarang
+                          .map(
+                            (item) => DropdownMenuItem<String>(
+                              value: item,
+                              child: Text(item),
+                            ),
+                          )
+                          .toList(),
+                  validator: (value) {
+                    if (value == null) {
+                      return 'Pilih jenis barang';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) {
+                    setState(() {
+                      selectedBarang = value;
+                      hargaController.text =
+                          hargaBarang[value!]!.toString(); 
+                    });
+                  },
+                ),
+                const SizedBox(height: 30),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Jumlah Barang', style: TextStyle(fontSize: 18)),
+                          const SizedBox(height: 10),
+                          TextFormField(
+                            controller: jumlahController,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              hintText: 'Jumlah Barang',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(18),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 102, 185, 51),
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(18),
+                                ),
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Jumlah barang tidak boleh kosong';
+                              }
+                              return null;
+                            },
                           ),
-                        )
-                        .toList(),
-                validator: (value) {
-                  if (value == null) {
-                    return 'Pilih jenis transaksi';
-                  }
-                  return null;
-                },
-                onChanged: (value) {},
-                onSaved: (value) {
-                  selectedValue = value.toString();
-                },
-              ),
-              const SizedBox(height: 30),
-              DropdownButtonFormField<String>(
-                isExpanded: true,
-                decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color.fromARGB(255, 102, 185, 51),
+                        ],
+                      ),
                     ),
-                    borderRadius: BorderRadius.all(Radius.circular(18)),
-                  ),
-                  labelText: 'Jenis Barang',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(18),
-                  ),
-                ),
-                hint: const Text('Jenis Barang'),
-                items:
-                    jenisBarang
-                        .map(
-                          (item) => DropdownMenuItem<String>(
-                            value: item,
-                            child: Text(item),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Harga Satuan', style: TextStyle(fontSize: 18)),
+                          const SizedBox(height: 10),
+                          TextFormField(
+                            controller: hargaController,
+                            readOnly: true, 
+                            decoration: InputDecoration(
+                              prefixText: 'Rp. ',
+                              hintText: 'Harga Satuan',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(18),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 102, 185, 51),
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(18),
+                                ),
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Harga satuan tidak boleh kosong';
+                              }
+                              return null;
+                            },
                           ),
-                        )
-                        .toList(),
-                validator: (value) {
-                  if (value == null) {
-                    return 'Pilih jenis barang';
-                  }
-                  return null;
-                },
-                onChanged: (value) {},
-                onSaved: (value) {
-                  selectedValue = value.toString();
-                },
-              ),
-            ],
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
