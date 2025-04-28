@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:pertemuan5_ucp/barang/detail_barang.dart';
 
 class PendataanBarang extends StatefulWidget {
@@ -51,6 +52,7 @@ class _PendataanBarangState extends State<PendataanBarang> {
   @override
   void initState() {
     super.initState();
+    initializeDateFormatting('id_ID', null);
   }
 
   Future<void> _selectDate() async {
@@ -64,6 +66,7 @@ class _PendataanBarangState extends State<PendataanBarang> {
     setState(() {
       String formattedDate = DateFormat(
         'EEEE, dd MMMM yyyy',
+        'id_ID',
       ).format(_pickedDate ?? DateTime.now());
       tanggalController.text = formattedDate;
     });

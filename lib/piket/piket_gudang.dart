@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:pertemuan5_ucp/piket/detail_piket.dart';
 
 class PiketGudang extends StatefulWidget {
@@ -19,6 +20,7 @@ class _PiketGudangState extends State<PiketGudang> {
   @override
   void initState() {
     super.initState();
+    initializeDateFormatting('id_ID', null);
   }
 
   void addPiket() {
@@ -38,6 +40,7 @@ class _PiketGudangState extends State<PiketGudang> {
     setState(() {
       String formattedDate = DateFormat(
         'EEEE, dd MMMM yyyy',
+        'id_ID',
       ).format(_pickedDate ?? DateTime.now());
       tanggalController.text = formattedDate;
     });
